@@ -28,7 +28,6 @@ public class AuthUI : MonoBehaviour
     {
         logInCanvas.enabled = false;
         signUpCanvas.enabled = true;
-        //wait until button is pressed
     }
 
     public void OnBack()
