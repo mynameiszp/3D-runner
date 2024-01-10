@@ -17,12 +17,6 @@ public class MainUI : MonoBehaviour
         Application.Quit();
     }
 
-    public void OnLogOut()
-    {
-        SceneManager.SetActiveScene(SceneManager.GetSceneAt(0));
-        //call AuthManager method
-    }
-
     public void OpenLeaderboard()
     {
         leaderboardCanvas.enabled = true;
