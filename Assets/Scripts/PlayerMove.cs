@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,9 +8,9 @@ public class PlayerMove : MonoBehaviour
 {
     private int desiredLine = 1;
     [SerializeField] private float laneDistance = 2;
-    private Vector2 moveInput;
     private bool isJumping;
     private bool isSliding;
+    private bool playMode;
     private IControlStrategy _inputController;
     private void Start()
     {
@@ -22,8 +23,21 @@ public class PlayerMove : MonoBehaviour
     private void Update()
     {
         _inputController.ManageInput();
-        SwipeHorizontally();
-        SwipeVertically();
+        StartGame();
+        if (playMode)
+        {
+            SwipeHorizontally();
+            SwipeVertically();
+        }
+    }
+
+    private void StartGame()
+    {
+        if (playMode == false &&_inputController.WasTouched)
+        {
+            playMode = true;
+            PlayerAnimation.Instance.AnimateRun();
+        }
     }
 
     private void SwipeHorizontally()
@@ -69,11 +83,6 @@ public class PlayerMove : MonoBehaviour
             }
             //collider?
         }
-    }
-
-    public Vector2 GetPlayerInput()
-    {
-        return moveInput;
     }
 }
 

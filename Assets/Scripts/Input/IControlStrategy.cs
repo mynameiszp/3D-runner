@@ -7,5 +7,6 @@ public interface IControlStrategy
     bool Right { get; }
     bool Up { get; }
     bool Down { get; }
+    bool WasTouched { get; }
     public void ManageInput(); 
 }

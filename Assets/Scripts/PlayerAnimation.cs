@@ -25,4 +25,8 @@ public class PlayerAnimation : MonoBehaviour
         yield return new WaitForSecondsRealtime(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
         animator.SetBool("IsSliding", false);
     }
+    public void AnimateRun()
+    {
+        animator.SetBool("IsRunning", true);
+    }
 }

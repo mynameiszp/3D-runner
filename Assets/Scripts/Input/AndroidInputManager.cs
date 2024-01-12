@@ -8,7 +8,8 @@ public class AndroidInputManager : IControlStrategy
     public bool Right { get; private set; } = false;
     public bool Up { get; private set; } = false;
     public bool Down { get; private set; } = false;
-    public bool WasTouched { get; private set; }
+    public bool WasTouched { get; private set; } = false;
+    public bool _wasSwiped;
     private Vector2 _startPos;
 
     public void ManageInput()
@@ -16,15 +17,16 @@ public class AndroidInputManager : IControlStrategy
         Left = Right = Up = Down = false;
         if (Input.touchCount > 0)
         {
+            WasTouched = true;
             Touch touch = Input.GetTouch(0);
             switch (touch.phase)
             {
                 case TouchPhase.Began:
                     _startPos = touch.position;
-                    WasTouched = false;
+                    _wasSwiped = false;
                     break;
                 case TouchPhase.Moved:
-                    if (WasTouched)
+                    if (_wasSwiped)
                         return;
                     Vector2 deltaSwipe = touch.position - _startPos;
                     if (Mathf.Abs(deltaSwipe.x) > Mathf.Abs(deltaSwipe.y))
@@ -37,10 +39,10 @@ public class AndroidInputManager : IControlStrategy
                         Up |= deltaSwipe.y > 0;
                         Down |= deltaSwipe.y < 0;
                     }
-                    WasTouched = true;
+                    _wasSwiped = true;
                     break;
                 case TouchPhase.Ended:
-                    WasTouched = false;
+                    _wasSwiped = false;
                     break;
             }
         }
