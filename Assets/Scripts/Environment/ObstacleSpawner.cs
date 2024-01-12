@@ -41,6 +41,7 @@ public class ObstacleSpawner : MonoBehaviour
                 spawnInitialPosition += 10f;
             }
         }
+        else Debug.Log("null");
     }
     private void DeactivateObject()
     {

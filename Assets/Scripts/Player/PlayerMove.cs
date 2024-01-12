@@ -9,6 +9,7 @@ public class PlayerMove : MonoBehaviour
 {
     private int desiredLine = 1;
     [SerializeField] private float laneDistance = 2;
+    [SerializeField] private float movementSmoothness = 300;
     private bool isJumping;
     private bool isSliding;
     public bool PlayMode { get; private set; }
@@ -66,7 +67,7 @@ public class PlayerMove : MonoBehaviour
         {
             targetPosition += Vector3.left * laneDistance;
         }
-        transform.position = Vector3.Lerp(transform.position, targetPosition, 200 * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, movementSmoothness * Time.deltaTime);
     }
     private void SwipeVertically()
     {

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DestroyTrigger
   - CreateTrigger
+  - Obstacle
   layers:
   - Default
   - TransparentFX

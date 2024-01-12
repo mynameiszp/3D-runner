@@ -16,7 +16,7 @@ public class ObjectsPool : MonoBehaviour
     void Start()
     {
         GameObject temp;
-        for(int i = 0; i < objectsAmount; i++)
+        for (int i = 0; i < objectsAmount; i++)
         {
             temp = Instantiate(objectPrefabs[Random.Range(0, objectPrefabs.Count)]);
             temp.AddComponent<ObstacleMove>();
