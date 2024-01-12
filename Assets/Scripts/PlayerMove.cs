@@ -13,11 +13,14 @@ public class PlayerMove : MonoBehaviour
     private bool isSliding;
     public bool PlayMode { get; private set; }
     private IControlStrategy _inputController;
-
     public static PlayerMove Instance { get; private set; }
-    private void Start()
+
+    private void Awake()
     {
         if (Instance == null) Instance = this;
+    }
+    private void Start()
+    {
 #if UNITY_EDITOR
         _inputController = new KeyBoardInputManager();
 #elif UNITY_ANDROID
