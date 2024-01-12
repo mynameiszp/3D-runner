@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class AndroidInputManager : IControlStrategy
 {
@@ -9,12 +10,14 @@ public class AndroidInputManager : IControlStrategy
     public bool Up { get; private set; } = false;
     public bool Down { get; private set; } = false;
     public bool WasTouched { get; private set; } = false;
-    public bool _wasSwiped;
+    public bool IsOverUI { get; private set; } = false;
+
+    private bool _wasSwiped;
     private Vector2 _startPos;
 
     public void ManageInput()
     {
-        Left = Right = Up = Down = false;
+        Left = Right = Up = Down = WasTouched = IsOverUI = false;
         if (Input.touchCount > 0)
         {
             WasTouched = true;
@@ -22,6 +25,7 @@ public class AndroidInputManager : IControlStrategy
             switch (touch.phase)
             {
                 case TouchPhase.Began:
+                    if (!EventSystem.current.IsPointerOverGameObject(touch.fingerId)) IsOverUI = true;
                     _startPos = touch.position;
                     _wasSwiped = false;
                     break;

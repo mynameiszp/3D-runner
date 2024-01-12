@@ -8,5 +8,6 @@ public interface IControlStrategy
     bool Up { get; }
     bool Down { get; }
     bool WasTouched { get; }
+    bool IsOverUI { get; }
     public void ManageInput(); 
 }

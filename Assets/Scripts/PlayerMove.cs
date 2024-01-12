@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerMove : MonoBehaviour
@@ -10,21 +11,24 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float laneDistance = 2;
     private bool isJumping;
     private bool isSliding;
-    private bool playMode;
+    public bool PlayMode { get; private set; }
     private IControlStrategy _inputController;
+
+    public static PlayerMove Instance { get; private set; }
     private void Start()
     {
-        #if UNITY_EDITOR
+        if (Instance == null) Instance = this;
+#if UNITY_EDITOR
         _inputController = new KeyBoardInputManager();
-        #elif UNITY_ANDROID
+#elif UNITY_ANDROID
         _inputController = new AndroidInputManager();
-        #endif
+#endif
     }
     private void Update()
     {
         _inputController.ManageInput();
         StartGame();
-        if (playMode)
+        if (PlayMode)
         {
             SwipeHorizontally();
             SwipeVertically();
@@ -32,10 +36,10 @@ public class PlayerMove : MonoBehaviour
     }
 
     private void StartGame()
-    {
-        if (playMode == false &&_inputController.WasTouched)
+    { 
+        if (PlayMode == false && _inputController.WasTouched && _inputController.IsOverUI)
         {
-            playMode = true;
+            PlayMode = true;
             PlayerAnimation.Instance.AnimateRun();
         }
     }
