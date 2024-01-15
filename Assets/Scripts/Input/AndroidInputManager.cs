@@ -25,7 +25,7 @@ public class AndroidInputManager : IControlStrategy
             switch (touch.phase)
             {
                 case TouchPhase.Began:
-                    if (!EventSystem.current.IsPointerOverGameObject(touch.fingerId)) IsOverUI = true;
+                    if (EventSystem.current.IsPointerOverGameObject(touch.fingerId)) IsOverUI = true;
                     _startPos = touch.position;
                     _wasSwiped = false;
                     break;

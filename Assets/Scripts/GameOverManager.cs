@@ -12,15 +12,18 @@ public class GameOverManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private GameObject restartButton;
     private Tween fadeTween;
+    private Score scoreManager;
     public static GameOverManager Instance { get; private set; }
     private void Awake()
     {
         if (Instance == null) Instance = this;
         deathCanvas.enabled = false;
+        scoreManager = Score.Instance;
     }
 
     public IEnumerator GameOver()
     {
+        StartCoroutine(FirebaseManager.Instance.UpdateScore(scoreManager.GetScore()));
         deathCanvas.enabled = true;
         restartButton.SetActive(false);
         yield return StartCoroutine(AnimateText(2, 1f));

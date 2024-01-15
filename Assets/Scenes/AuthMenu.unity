@@ -2324,7 +2324,7 @@ GameObject:
   - component: {fileID: 1746315479}
   - component: {fileID: 1746315480}
   m_Layer: 0
-  m_Name: AuthManager
+  m_Name: FirebaseManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2366,6 +2366,8 @@ MonoBehaviour:
   passwordRegisterField: {fileID: 1551689442}
   passwordRegisterVerifyField: {fileID: 1308054281}
   warningRegisterText: {fileID: 1393428119}
+  _username: 
+  _score: 0
 --- !u!1 &1747063633
 GameObject:
   m_ObjectHideFlags: 0
