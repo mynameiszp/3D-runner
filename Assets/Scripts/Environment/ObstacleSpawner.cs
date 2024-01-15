@@ -8,7 +8,7 @@ public class ObstacleSpawner : MonoBehaviour
     private Vector3 initialPosition;
     private bool hasStarted;
     [SerializeField] private GameObject positionsForSpawn;
-    [SerializeField] private float spawnInitialPosition = 30f;
+    [SerializeField] private float spawnInitialPosition = 50f;
     [SerializeField] private float spawnObjectDistance = 10f;
     void Start()
     {
@@ -46,7 +46,6 @@ public class ObstacleSpawner : MonoBehaviour
                 }
             }
         }
-
     }
 
     private void DeactivateObject()

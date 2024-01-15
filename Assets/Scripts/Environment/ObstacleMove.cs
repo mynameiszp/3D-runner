@@ -21,4 +21,8 @@ public class ObstacleMove : MonoBehaviour
             }
         }
     }
+    public void SetMoveSpeed(float speed)
+    {
+        moveSpeed = speed;
+    }
 }

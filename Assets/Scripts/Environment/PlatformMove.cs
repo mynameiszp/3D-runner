@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlatformMove : MonoBehaviour
 {
-    [SerializeField] public float moveSpeed = 10f;
+    [SerializeField] private float moveSpeed = 10f;
     private void FixedUpdate()
     {
         if (PlayerMove.Instance.PlayMode) transform.Translate(moveSpeed * Time.deltaTime * Vector3.back);
@@ -16,5 +16,9 @@ public class PlatformMove : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    public void SetMoveSpeed(float speed)
+    {
+        moveSpeed = speed;
     }
 }

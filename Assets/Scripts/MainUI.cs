@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 public class MainUI : MonoBehaviour
 {
     [Header("Canvas")]
-    public Canvas leaderboardCanvas;
-    public Canvas mainCanvas;
+    [SerializeField] private Canvas leaderboardCanvas;
+    [SerializeField] private Canvas mainCanvas;
 
     private void Awake()
     {
         leaderboardCanvas.enabled = false;
+        //mainCanvas.enabled = true;
     }
     private void Update()
     {

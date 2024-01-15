@@ -20,6 +20,6 @@ public class KeyBoardInputManager : IControlStrategy
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) Right = true;
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) Up = true;
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) Down = true;
-        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) IsOverUI = true;
+        if (Input.GetMouseButtonDown(0) && EventSystem.current.IsPointerOverGameObject()) IsOverUI = true;
     }
 }

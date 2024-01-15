@@ -41,7 +41,7 @@ public class PlayerMove : MonoBehaviour
 
     private void StartGame()
     { 
-        if (PlayMode == false && _inputController.WasTouched && _inputController.IsOverUI)
+        if (PlayMode == false && _inputController.WasTouched && !_inputController.IsOverUI)
         {
             PlayMode = true;
             PlayerAnimation.Instance.AnimateRun();
