@@ -9,6 +9,7 @@ public class ObstacleSpawner : MonoBehaviour
     private bool hasStarted;
     [SerializeField] private GameObject positionsForSpawn;
     [SerializeField] private float spawnInitialPosition = 30f;
+    [SerializeField] private float spawnObjectDistance = 10f;
     void Start()
     {
         objectsPool = ObjectsPool.Instance;
@@ -30,19 +31,24 @@ public class ObstacleSpawner : MonoBehaviour
     private void GenerateObjects()
     {
         obstacleSpawnIndex = Random.Range(0, 3);
-        GameObject gameObject = objectsPool.GetPooledObject();
-        if (gameObject != null)
+        int objectIndex = objectsPool.GetPooledObjectIndex();
+        if (objectIndex != -1)
         {
-            if (!gameObject.activeInHierarchy)
+            GameObject currentGameObject = objectsPool.GetPooledObjects()[objectIndex];
+            GameObject previousGameObject = objectsPool.GetPreviousObject(objectIndex);
+            if (currentGameObject != null && previousGameObject != null)
             {
-                initialPosition = positionsForSpawn.transform.GetChild(obstacleSpawnIndex).position;
-                gameObject.SetActive(true);
-                gameObject.transform.position = new Vector3(initialPosition.x, initialPosition.y, spawnInitialPosition);
-                spawnInitialPosition += 10f;
+                if (!currentGameObject.activeInHierarchy)
+                {
+                    initialPosition = positionsForSpawn.transform.GetChild(obstacleSpawnIndex).position;
+                    currentGameObject.SetActive(true);
+                    currentGameObject.transform.position = new Vector3(initialPosition.x, initialPosition.y, previousGameObject.transform.position.z + spawnObjectDistance);
+                }
             }
         }
-        else Debug.Log("null");
+
     }
+
     private void DeactivateObject()
     {
         foreach (GameObject gameObject in objectsPool.GetPooledObjects())
@@ -53,6 +59,7 @@ public class ObstacleSpawner : MonoBehaviour
             }
         }
     }
+
     private IEnumerator WaitToStart()
     {
         if (!hasStarted)

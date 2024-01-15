@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectsPool : MonoBehaviour
 {
     public static ObjectsPool Instance;
-    [SerializeField] private List<GameObject> pooledObjects;    
+    [SerializeField] private List<GameObject> pooledObjects;
     [SerializeField] private int objectsAmount;
     [SerializeField] private List<GameObject> objectPrefabs;
     private void Awake()
@@ -24,20 +24,29 @@ public class ObjectsPool : MonoBehaviour
             pooledObjects.Add(temp);
         }
     }
-    public GameObject GetPooledObject()
+
+    public int GetPooledObjectIndex()
     {
         for (int i = 0; i < pooledObjects.Count; i++)
         {
             if (!pooledObjects[i].activeInHierarchy)
             {
-                return pooledObjects[i];
+                return i;
             }
         }
-        return null;
+        return -1;
     }
+
 
     public List<GameObject> GetPooledObjects()
     {
         return pooledObjects;
+    }
+
+    public GameObject GetPreviousObject(int currentIndex)
+    {
+        if (currentIndex == 0) return pooledObjects[pooledObjects.Count - 1];
+        if (currentIndex < pooledObjects.Count) return pooledObjects[currentIndex - 1];
+        return null;
     }
 }
