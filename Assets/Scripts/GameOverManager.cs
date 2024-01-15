@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class GameOverManager : MonoBehaviour
 {
-    private CanvasGroup deathCanvas;
+    [SerializeField] private Canvas deathCanvas;
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private GameObject restartButton;
     private Tween fadeTween;
@@ -16,18 +16,12 @@ public class GameOverManager : MonoBehaviour
     private void Awake()
     {
         if (Instance == null) Instance = this;
-        deathCanvas = GetComponent<CanvasGroup>();
-        deathCanvas.alpha = 0f;
-    }
-    public void OnRestart()
-    {
-        Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        deathCanvas.enabled = false;
     }
 
     public IEnumerator GameOver()
     {
-        deathCanvas.alpha = 1f;
+        deathCanvas.enabled = true;
         restartButton.SetActive(false);
         yield return StartCoroutine(AnimateText(2, 1f));
         Time.timeScale = 0;

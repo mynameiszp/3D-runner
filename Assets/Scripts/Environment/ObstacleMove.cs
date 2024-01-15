@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class ObstacleMove : MonoBehaviour
 {
-    [SerializeField] public float moveSpeed = 1f;
-    [SerializeField] public float speedIncrease = 0.0001f;
+    [SerializeField] private static float moveSpeed = 1f;
+    [SerializeField] private float speedIncrease = 0.00001f;
     private ObjectsPool objectsPool;
     private void Start()
     {
+        moveSpeed = 1f;
         objectsPool = ObjectsPool.Instance;
     }
     private void FixedUpdate()
@@ -23,8 +24,8 @@ public class ObstacleMove : MonoBehaviour
             moveSpeed += speedIncrease;
         }
     }
-    public void SetMoveSpeed(float speed)
+    public static float GetMoveSpeed()
     {
-        moveSpeed = speed;
+        return moveSpeed;
     }
 }
