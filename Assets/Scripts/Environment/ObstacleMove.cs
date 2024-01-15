@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObstacleMove : MonoBehaviour
 {
     [SerializeField] public float moveSpeed = 1f;
+    [SerializeField] public float speedIncrease = 0.0001f;
     private ObjectsPool objectsPool;
     private void Start()
     {
@@ -19,6 +20,7 @@ public class ObstacleMove : MonoBehaviour
                 if (gameObject.activeInHierarchy)
                     gameObject.transform.Translate(moveSpeed * Time.deltaTime * Vector3.back);
             }
+            moveSpeed += speedIncrease;
         }
     }
     public void SetMoveSpeed(float speed)
