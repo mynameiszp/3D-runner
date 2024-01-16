@@ -7,40 +7,18 @@ using UnityEngine.SceneManagement;
 
 public class PlayerDeath : MonoBehaviour
 {
-    private bool isDead;
+    //private bool isDead;
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Obstacle") && isDead == false) ProcessDeath();
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            ProcessDeath();
+            ObjectsPool.Instance.DeactivateObject(collision.gameObject);
+        }
     }
 
     private void ProcessDeath()
     {
-        isDead = true;
         StartCoroutine(GameOverManager.Instance.GameOver());
     }
-    //private void Fade(float endValue, float duration, TweenCallback onEnd)
-    //{
-    //    if(fadeTween != null)
-    //    {
-    //        fadeTween.Kill(false);
-    //    }
-    //    fadeTween = canvasGroup.DOFade(endValue, duration);
-    //    fadeTween.onComplete += onEnd;
-    //}
-
-    //private void FadeIn(float duration) {
-    //    Fade(1f, duration, () =>
-    //    {
-    //        canvasGroup.interactable = true;
-    //        canvasGroup.blocksRaycasts = true;
-    //    });
-    //}
-    //private void FadeOut(float duration) {
-    //    Fade(0f, duration, () =>
-    //    {
-    //        canvasGroup.interactable = false;
-    //        canvasGroup.blocksRaycasts = false;
-    //        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    //    });
-    //}
 }

@@ -9,10 +9,13 @@ using UnityEngine.UI;
 public class GameOverManager : MonoBehaviour
 {
     [SerializeField] private Canvas deathCanvas;
+    [SerializeField] private GameObject gameCanvas;
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private GameObject restartButton;
+    [SerializeField] private GameObject watchAdButton;
     private Tween fadeTween;
     private Score scoreManager;
+    private bool hasWatchedAd;
     public static GameOverManager Instance { get; private set; }
     private void Awake()
     {
@@ -23,12 +26,16 @@ public class GameOverManager : MonoBehaviour
 
     public IEnumerator GameOver()
     {
+        PlayerMove.Instance.PlayMode = false;
+        gameCanvas.SetActive(false);
         StartCoroutine(FirebaseManager.Instance.UpdateScore(scoreManager.GetScore()));
         deathCanvas.enabled = true;
         restartButton.SetActive(false);
+        watchAdButton.SetActive(false);
         yield return StartCoroutine(AnimateText(2, 1f));
-        Time.timeScale = 0;
+        Time.timeScale = 0; //
         restartButton.SetActive(true);
+        if (hasWatchedAd == false) watchAdButton.SetActive(true);
     }
 
     private void BlinkIn(float duration)
@@ -49,5 +56,12 @@ public class GameOverManager : MonoBehaviour
             BlinkIn(duration);
             yield return new WaitForSecondsRealtime(duration);
         }
+    }
+
+    public void Revive() {
+        hasWatchedAd = true;
+        deathCanvas.enabled = false;
+        gameCanvas.SetActive(true);
+        PlayerMove.Instance.PlayMode = true;
     }
 }

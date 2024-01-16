@@ -12,7 +12,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float movementSmoothness = 300;
     private bool isJumping;
     private bool isSliding;
-    public bool PlayMode { get; private set; }
+    public bool PlayMode { get; set; }
     private IControlStrategy _inputController;
     public static PlayerMove Instance { get; private set; }
 

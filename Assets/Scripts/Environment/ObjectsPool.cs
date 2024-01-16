@@ -49,4 +49,9 @@ public class ObjectsPool : MonoBehaviour
         if (currentIndex < pooledObjects.Count) return pooledObjects[currentIndex - 1];
         return null;
     }
+
+    public void DeactivateObject(GameObject obj)
+    {
+        if (pooledObjects.Contains(obj)) obj.SetActive(false);
+    }
 }

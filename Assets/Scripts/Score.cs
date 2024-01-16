@@ -34,7 +34,7 @@ public class Score : MonoBehaviour
     public void ResetScore()
     {
         _score = 0;
-    }
+    }    
 
     public int GetScore()
     {

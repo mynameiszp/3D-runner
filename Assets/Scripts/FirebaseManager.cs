@@ -36,10 +36,8 @@ public class FirebaseManager : MonoBehaviour
     [SerializeField] private TMP_InputField passwordRegisterVerifyField;
     [SerializeField] private TMP_Text warningRegisterText;
 
-    [Header("UserData")]
     private string _username;
     private int _score;
-
     public static FirebaseManager Instance { get; private set; }
     private Score scoreManager;
     private Dictionary<string, int> leaders = new Dictionary<string, int>();
@@ -48,19 +46,22 @@ public class FirebaseManager : MonoBehaviour
         if (Instance == null) Instance = this;
         scoreManager = Score.Instance;
         //Check that all of the necessary dependencies for Firebase are present on the system
-        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
-        {
-            dependencyStatus = task.Result;
-            if (dependencyStatus == DependencyStatus.Available)
+      
+            FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
             {
-                //If they are avalible Initialize Firebase
-                InitializeFirebase();
-            }
-            else
-            {
-                Debug.LogError("Could not resolve all Firebase dependencies: " + dependencyStatus);
-            }
-        });
+                dependencyStatus = task.Result;
+                if (dependencyStatus == DependencyStatus.Available)
+                {
+                    //If they are avalible Initialize Firebase
+                    InitializeFirebase();
+                }
+                else
+                {
+                    Debug.LogError("Could not resolve all Firebase dependencies: " + dependencyStatus);
+                }
+            });
+        
+
         warningLoginText.text = "";
         warningRegisterText.text = "";
         DontDestroyOnLoad(this.gameObject);
@@ -88,8 +89,6 @@ public class FirebaseManager : MonoBehaviour
             auth.SignOut();
         }
         SceneManager.LoadScene("AuthMenu");
-        //ClearLoginFeilds();
-        //ClearRegisterFeilds();
     }
 
     private IEnumerator Login(string email, string password)
@@ -243,7 +242,6 @@ public class FirebaseManager : MonoBehaviour
     }
     public IEnumerator UpdateScore(int score) //додати перевірку на макс результат
     {
-        Debug.Log(_score);
         if (score >= _score)
         {
             //Set the currently logged in user deaths
