@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,9 @@ public class MainUI : MonoBehaviour
     [SerializeField] private Canvas leaderboardCanvas;
     [SerializeField] private Canvas mainCanvas;
     [SerializeField] private Canvas gameCanvas;
+    [Header("Leaderboard")]
+    [SerializeField] private GameObject rowPrefab;
+    [SerializeField] private Transform table;
     private bool isPaused;
 
     private void Awake()
@@ -33,8 +37,9 @@ public class MainUI : MonoBehaviour
     public void OnOpenLeaderboard()
     {
         leaderboardCanvas.enabled = true;
+        Leaderboard.Instance.ShowLeaderboard(table, rowPrefab);
     }    
-    
+
     public void OnCloseLeaderboard()
     {
         leaderboardCanvas.enabled = false;
