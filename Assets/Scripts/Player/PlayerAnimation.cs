@@ -29,4 +29,13 @@ public class PlayerAnimation : MonoBehaviour
     {
         animator.SetBool("IsRunning", true);
     }
+
+    public bool IsJumping()
+    {
+        return animator.GetBool("IsJumping");
+    }    
+    public bool IsSliding()
+    {
+        return animator.GetBool("IsSliding");
+    }
 }

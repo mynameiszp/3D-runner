@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float laneDistance = 2;
     [SerializeField] private float movementSmoothness = 300;
@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isSliding;
     private IControlStrategy _inputController;
     public bool PlayMode { get; set; }
-    public static PlayerMovement Instance { get; private set; }
+    public static PlayerController Instance { get; private set; }
 
     private void Awake()
     {
@@ -80,22 +80,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_inputController.Up)
         {
-            if (!isJumping)
-            {
-                isJumping = true;
-                StartCoroutine(PlayerAnimation.Instance.AnimateJump());
-                isJumping = false;
-            }
+            if (!PlayerAnimation.Instance.IsJumping() && !PlayerAnimation.Instance.IsSliding()) StartCoroutine(PlayerAnimation.Instance.AnimateJump());
             //collider?
         }
         else if (_inputController.Down)
         {
-            if (!isSliding)
-            {
-                isSliding = true;
-                StartCoroutine(PlayerAnimation.Instance.AnimateSlide());
-                isSliding = false;
-            }
+            if (!PlayerAnimation.Instance.IsSliding() && !PlayerAnimation.Instance.IsJumping()) StartCoroutine(PlayerAnimation.Instance.AnimateSlide());
             //collider?
         }
     }

@@ -7,7 +7,7 @@ public class PlatformMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 10f;
     private void FixedUpdate()
     {
-        if (PlayerMovement.Instance.PlayMode) transform.Translate(moveSpeed * Time.deltaTime * Vector3.back);
+        if (PlayerController.Instance.PlayMode) transform.Translate(moveSpeed * Time.deltaTime * Vector3.back);
     }
 
     private void OnTriggerEnter(Collider other)

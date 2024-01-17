@@ -16,7 +16,7 @@ public class ObstacleMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (PlayerMovement.Instance.PlayMode)
+        if (PlayerController.Instance.PlayMode)
         {
             foreach (GameObject gameObject in objectsPool.GetPooledObjects())
             {

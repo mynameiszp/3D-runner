@@ -23,7 +23,7 @@ public class MainUI : MonoBehaviour
     }
     private void Update()
     {
-        if (PlayerMovement.Instance.PlayMode)
+        if (PlayerController.Instance.PlayMode)
         {
             mainCanvas.enabled = false;
             gameCanvas.enabled = true;

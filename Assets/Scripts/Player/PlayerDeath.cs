@@ -12,7 +12,6 @@ public class PlayerDeath : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstacle"))
         {
             ProcessDeath();
-            //ObjectsPool.Instance.DeactivateObject(collision.gameObject);
             ObjectsPool.Instance.DeactivateAll();
         }
     }

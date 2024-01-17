@@ -23,7 +23,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     void Update()
     {
-        if (PlayerMovement.Instance.PlayMode)
+        if (PlayerController.Instance.PlayMode)
         {
             if (!hasStartedGame) StartCoroutine(WaitToStart(4));
 
@@ -31,11 +31,6 @@ public class ObstacleSpawner : MonoBehaviour
             {
                 GenerateObjects();
                 DeactivateObject();
-                //if (HasRestartedGame)
-                //{
-                //    StartCoroutine(WaitToStart(1));
-                //    HasRestartedGame = false;
-                //}
             }
         }
     }
@@ -64,7 +59,7 @@ public class ObstacleSpawner : MonoBehaviour
     {
         foreach (GameObject gameObject in objectsPool.GetPooledObjects())
         {
-            if (gameObject.transform.position.z < PlayerMovement.Instance.transform.position.z - 2)
+            if (gameObject.transform.position.z < PlayerController.Instance.transform.position.z - 2)
             {
                 objectsPool.DeactivateObject(gameObject);
             }
