@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
+    [SerializeField] private GameObject positionsForSpawn;
+    [SerializeField] private float spawnInitialPosition = 50f;
+    [SerializeField] private float spawnObjectDistance = 10f;
     private int obstacleSpawnIndex;
     private ObjectsPool objectsPool;
     private Vector3 initialPosition;
     private bool hasStarted;
-    [SerializeField] private GameObject positionsForSpawn;
-    [SerializeField] private float spawnInitialPosition = 50f;
-    [SerializeField] private float spawnObjectDistance = 10f;
     void Start()
     {
         objectsPool = ObjectsPool.Instance;
@@ -17,7 +17,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     void Update()
     {
-        if (PlayerMove.Instance.PlayMode)
+        if (PlayerMovement.Instance.PlayMode)
         {
             StartCoroutine(WaitToStart());
             if (hasStarted)
@@ -52,7 +52,7 @@ public class ObstacleSpawner : MonoBehaviour
     {
         foreach (GameObject gameObject in objectsPool.GetPooledObjects())
         {
-            if (gameObject.transform.position.z < PlayerMove.Instance.transform.position.z - 2)
+            if (gameObject.transform.position.z < PlayerMovement.Instance.transform.position.z - 2)
             {
                 gameObject.SetActive(false);
             }

@@ -26,7 +26,7 @@ public class GameOverManager : MonoBehaviour
 
     public IEnumerator GameOver()
     {
-        PlayerMove.Instance.PlayMode = false;
+        PlayerMovement.Instance.PlayMode = false;
         gameCanvas.SetActive(false);
         StartCoroutine(FirebaseManager.Instance.UpdateScore(scoreManager.GetScore()));
         deathCanvas.enabled = true;
@@ -61,6 +61,6 @@ public class GameOverManager : MonoBehaviour
         hasWatchedAd = true;
         deathCanvas.enabled = false;
         gameCanvas.SetActive(true);
-        PlayerMove.Instance.PlayMode = true;
+        PlayerMovement.Instance.PlayMode = true;
     }
 }

@@ -5,16 +5,16 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class PlayerMove : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    private int desiredLine = 1;
     [SerializeField] private float laneDistance = 2;
     [SerializeField] private float movementSmoothness = 300;
+    private int desiredLine = 1;
     private bool isJumping;
     private bool isSliding;
-    public bool PlayMode { get; set; }
     private IControlStrategy _inputController;
-    public static PlayerMove Instance { get; private set; }
+    public bool PlayMode { get; set; }
+    public static PlayerMovement Instance { get; private set; }
 
     private void Awake()
     {
@@ -50,6 +50,11 @@ public class PlayerMove : MonoBehaviour
 
     private void SwipeHorizontally()
     {
+        DetectDesiredLine();
+        MoveHorizontally();
+    }
+    private void DetectDesiredLine()
+    {
         if (_inputController.Right && desiredLine < 2)
         {
             desiredLine++;
@@ -58,6 +63,10 @@ public class PlayerMove : MonoBehaviour
         {
             desiredLine--;
         }
+    }
+
+    private void MoveHorizontally()
+    {
         Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
         if (desiredLine == 2)
         {

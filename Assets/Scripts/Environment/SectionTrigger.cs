@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SectionTrigger : MonoBehaviour
 {
-    public GameObject road;
+    [SerializeField] private GameObject road;
 
     private void OnTriggerEnter(Collider other)
     {        

@@ -7,8 +7,8 @@ using GoogleMobileAds.Api;
 public class RewardedAdvertisement : MonoBehaviour
 {
     private GameObject AdLoadedStatus;
+    private RewardedAd _rewardedAd;
 
-    // These ad units are configured to always serve test ads.
 #if UNITY_ANDROID
     private const string _adUnitId = "ca-app-pub-3940256099942544/5224354917";
 #elif UNITY_IPHONE
@@ -17,19 +17,12 @@ public class RewardedAdvertisement : MonoBehaviour
 //        private const string _adUnitId = "unused";
 #endif
 
-    private RewardedAd _rewardedAd;
-
-    /// <summary>
-    /// Loads the ad.
-    /// </summary>
-    /// 
     private void Start()
     {
         MobileAds.Initialize((InitializationStatus initStatus) => {
             // This callback is called once the MobileAds SDK is initialized.
         });
-        LoadAd();
-    
+        LoadAd();    
     }
 
     public void OnRequestAd()
@@ -79,9 +72,6 @@ public class RewardedAdvertisement : MonoBehaviour
         });
     }
 
-    /// <summary>
-    /// Shows the ad.
-    /// </summary>
     private void ShowAd()
     {
         if (_rewardedAd != null && _rewardedAd.CanShowAd())
@@ -104,9 +94,6 @@ public class RewardedAdvertisement : MonoBehaviour
         AdLoadedStatus?.SetActive(false);
     }
 
-    /// <summary>
-    /// Destroys the ad.
-    /// </summary>
     private void DestroyAd()
     {
         if (_rewardedAd != null)
@@ -120,9 +107,6 @@ public class RewardedAdvertisement : MonoBehaviour
         AdLoadedStatus?.SetActive(false);
     }
 
-    /// <summary>
-    /// Logs the ResponseInfo.
-    /// </summary>
     private void LogResponseInfo()
     {
         if (_rewardedAd != null)

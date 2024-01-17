@@ -38,15 +38,13 @@ public class FirebaseManager : MonoBehaviour
 
     private string _username;
     private int _score;
-    public static FirebaseManager Instance { get; private set; }
-    private Score scoreManager;
     private Dictionary<string, int> leaders = new Dictionary<string, int>();
+    public static FirebaseManager Instance { get; private set; }
+
     void Awake()
     {
         if (Instance == null) Instance = this;
-        scoreManager = Score.Instance;
         //Check that all of the necessary dependencies for Firebase are present on the system
-      
             FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
             {
                 dependencyStatus = task.Result;

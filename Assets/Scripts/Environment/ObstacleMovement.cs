@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleMove : MonoBehaviour
+public class ObstacleMovement : MonoBehaviour
 {
     [SerializeField] private static float moveSpeed = 1f;
     [SerializeField] private float speedIncrease = 0.00001f;
@@ -14,7 +14,7 @@ public class ObstacleMove : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (PlayerMove.Instance.PlayMode)
+        if (PlayerMovement.Instance.PlayMode)
         {
             foreach (GameObject gameObject in objectsPool.GetPooledObjects())
             {

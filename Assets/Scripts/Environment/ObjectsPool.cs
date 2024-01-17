@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ObjectsPool : MonoBehaviour
 {
-    public static ObjectsPool Instance;
     [SerializeField] private List<GameObject> pooledObjects;
     [SerializeField] private int objectsAmount;
     [SerializeField] private List<GameObject> objectPrefabs;
+    public static ObjectsPool Instance;
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -19,7 +19,7 @@ public class ObjectsPool : MonoBehaviour
         for (int i = 0; i < objectsAmount; i++)
         {
             temp = Instantiate(objectPrefabs[Random.Range(0, objectPrefabs.Count)]);
-            temp.AddComponent<ObstacleMove>();
+            temp.AddComponent<ObstacleMovement>();
             temp.SetActive(false);
             pooledObjects.Add(temp);
         }
@@ -36,7 +36,6 @@ public class ObjectsPool : MonoBehaviour
         }
         return -1;
     }
-
 
     public List<GameObject> GetPooledObjects()
     {

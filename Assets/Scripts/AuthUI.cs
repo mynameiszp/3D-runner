@@ -5,8 +5,8 @@ using UnityEngine;
 public class AuthUI : MonoBehaviour
 {
     [Header("Canvas")]
-    public Canvas logInCanvas;
-    public Canvas signUpCanvas;
+    [SerializeField] private Canvas logInCanvas;
+    [SerializeField] private Canvas signUpCanvas;
 
     public static AuthUI instance;
 
