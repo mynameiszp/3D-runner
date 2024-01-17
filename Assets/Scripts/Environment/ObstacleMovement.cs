@@ -7,6 +7,7 @@ public class ObstacleMovement : MonoBehaviour
     [SerializeField] private static float moveSpeed = 1f;
     [SerializeField] private float speedIncrease = 0.00001f;
     private ObjectsPool objectsPool;
+    private float speedLimit = 3f;
     private static float initialMoveSpeed;
     private void Start()
     {
@@ -22,7 +23,7 @@ public class ObstacleMovement : MonoBehaviour
                 if (gameObject.activeInHierarchy)
                     gameObject.transform.Translate(moveSpeed * Time.deltaTime * Vector3.back);
             }
-            moveSpeed += speedIncrease;
+            if(moveSpeed < speedLimit) moveSpeed += speedIncrease;
         }
     }
     public static float GetMoveSpeed()
