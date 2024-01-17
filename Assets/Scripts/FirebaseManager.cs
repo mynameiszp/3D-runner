@@ -86,7 +86,6 @@ public class FirebaseManager : MonoBehaviour
         {
             auth.SignOut();
         }
-        SceneManager.LoadScene("AuthMenu");
     }
 
     private IEnumerator Login(string email, string password)

@@ -80,12 +80,20 @@ public class PlayerController : MonoBehaviour
     {
         if (_inputController.Up)
         {
-            if (!PlayerAnimation.Instance.IsJumping() && !PlayerAnimation.Instance.IsSliding()) StartCoroutine(PlayerAnimation.Instance.AnimateJump());
+            if (!PlayerAnimation.Instance.IsJumping())
+            {
+                PlayerAnimation.Instance.StopSliding();
+                StartCoroutine(PlayerAnimation.Instance.AnimateJump());
+            }
             //collider?
         }
         else if (_inputController.Down)
         {
-            if (!PlayerAnimation.Instance.IsSliding() && !PlayerAnimation.Instance.IsJumping()) StartCoroutine(PlayerAnimation.Instance.AnimateSlide());
+            if (!PlayerAnimation.Instance.IsSliding())
+            {
+                PlayerAnimation.Instance.StopJumping();
+                StartCoroutine(PlayerAnimation.Instance.AnimateSlide());
+            }
             //collider?
         }
     }

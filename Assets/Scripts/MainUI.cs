@@ -19,7 +19,6 @@ public class MainUI : MonoBehaviour
     {
         leaderboardCanvas.enabled = false;
         gameCanvas.enabled = false;
-        //mainCanvas.enabled = true;
     }
     private void Update()
     {
@@ -32,6 +31,11 @@ public class MainUI : MonoBehaviour
     public void OnExit()
     {
         Application.Quit();
+    }    
+    public void OnLogOut()
+    {
+        FirebaseManager.Instance.Logout();
+        SceneManager.LoadScene("AuthMenu");
     }
 
     public void OnOpenLeaderboard()

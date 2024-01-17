@@ -373,8 +373,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -350}
-  m_SizeDelta: {x: 0, y: 300}
+  m_AnchoredPosition: {x: 0, y: -550}
+  m_SizeDelta: {x: -1100, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &233280837
 MonoBehaviour:
@@ -394,7 +394,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 100
+  m_Spacing: 70
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -890,8 +890,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positionsForSpawn: {fileID: 1931168751}
-  spawnInitialPosition: 30
   spawnObjectDistance: 10
+  hasStartedGame: 0
 --- !u!1001 &520238645
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1064,16 +1064,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1313362410238677177, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
+      propertyPath: m_Color.a
+      value: 0.8392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 1313362410238677177, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1313362410238677177, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1313362410238677177, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2257024107641646795, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_Pivot.x
@@ -1161,27 +1165,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4080047790122248297, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_text
-      value: Watch add to revive
+      value: Watch ad to revive
       objectReference: {fileID: 0}
     - target: {fileID: 4080047790122248297, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_fontSize
-      value: 89.5
+      value: 130
       objectReference: {fileID: 0}
     - target: {fileID: 4080047790122248297, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_fontStyle
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4080047790122248297, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_fontColor.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4080047790122248297, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_fontColor.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4080047790122248297, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_fontColor.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4080047790122248297, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_fontSizeMax
@@ -1193,7 +1197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4080047790122248297, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4294967295
+      value: 4278190080
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1936,8 +1940,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -800}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -950}
+  m_SizeDelta: {x: -300, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &740301978
 MonoBehaviour:
@@ -2930,16 +2934,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1313362410238677177, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
+      propertyPath: m_Color.a
+      value: 0.8392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 1313362410238677177, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1313362410238677177, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1313362410238677177, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2257024107641646795, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_Pivot.x
@@ -3031,23 +3039,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4080047790122248297, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_fontSize
-      value: 89.5
+      value: 130
       objectReference: {fileID: 0}
     - target: {fileID: 4080047790122248297, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_fontStyle
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4080047790122248297, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_fontColor.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4080047790122248297, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_fontColor.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4080047790122248297, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_fontColor.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4080047790122248297, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_fontSizeMax
@@ -3059,7 +3067,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4080047790122248297, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4294967295
+      value: 4278190080
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3810,7 +3818,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2257024107641646795, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -400
+      value: -1000
       objectReference: {fileID: 0}
     - target: {fileID: 2257024107641646795, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_SizeDelta.y
@@ -3850,7 +3858,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2257024107641646795, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 300
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 2257024107641646795, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4227,8 +4235,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 40230101d7221024ebd7cf19b3e0eeee, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4350,8 +4358,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -600}
-  m_SizeDelta: {x: 0, y: 120}
+  m_AnchoredPosition: {x: 0, y: -800}
+  m_SizeDelta: {x: -300, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1668641712
 MonoBehaviour:
@@ -4479,7 +4487,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -150}
+  m_AnchoredPosition: {x: 0, y: -350}
   m_SizeDelta: {x: 0, y: 250}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1677834392
