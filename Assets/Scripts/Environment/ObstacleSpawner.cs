@@ -4,12 +4,18 @@ using UnityEngine;
 public class ObstacleSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject positionsForSpawn;
-    [SerializeField] private float spawnInitialPosition = 50f;
+    //[SerializeField] private float spawnInitialPosition = 50f;
     [SerializeField] private float spawnObjectDistance = 10f;
     private int obstacleSpawnIndex;
     private ObjectsPool objectsPool;
     private Vector3 initialPosition;
-    private bool hasStarted;
+    public bool hasStartedGame;
+    public bool HasRestartedGame { get; set; }
+    public static ObstacleSpawner Instance { get; private set; }
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+    }
     void Start()
     {
         objectsPool = ObjectsPool.Instance;
@@ -19,11 +25,17 @@ public class ObstacleSpawner : MonoBehaviour
     {
         if (PlayerMovement.Instance.PlayMode)
         {
-            StartCoroutine(WaitToStart());
-            if (hasStarted)
+            if (!hasStartedGame) StartCoroutine(WaitToStart(4));
+
+            if (hasStartedGame)
             {
                 GenerateObjects();
                 DeactivateObject();
+                //if (HasRestartedGame)
+                //{
+                //    StartCoroutine(WaitToStart(1));
+                //    HasRestartedGame = false;
+                //}
             }
         }
     }
@@ -54,17 +66,14 @@ public class ObstacleSpawner : MonoBehaviour
         {
             if (gameObject.transform.position.z < PlayerMovement.Instance.transform.position.z - 2)
             {
-                gameObject.SetActive(false);
+                objectsPool.DeactivateObject(gameObject);
             }
         }
     }
 
-    private IEnumerator WaitToStart()
+    private IEnumerator WaitToStart(float time)
     {
-        if (!hasStarted)
-        {
-            yield return new WaitForSecondsRealtime(4);
-            hasStarted = true;
-        }
+        yield return new WaitForSecondsRealtime(time);
+        hasStartedGame = true;
     }
 }

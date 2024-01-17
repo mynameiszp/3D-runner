@@ -53,4 +53,19 @@ public class ObjectsPool : MonoBehaviour
     {
         if (pooledObjects.Contains(obj)) obj.SetActive(false);
     }
+    public void DeactivateAll()
+    {
+        foreach(GameObject obj in pooledObjects)
+        {
+            obj.SetActive(false);
+        }
+    }
+
+    public void ActivateAll()
+    {
+        foreach (GameObject obj in pooledObjects)
+        {
+            obj.SetActive(false);
+        }
+    }
 }

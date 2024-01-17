@@ -62,5 +62,6 @@ public class GameOverManager : MonoBehaviour
         deathCanvas.enabled = false;
         gameCanvas.SetActive(true);
         PlayerMovement.Instance.PlayMode = true;
+        ObstacleSpawner.Instance.HasRestartedGame = true;
     }
 }
