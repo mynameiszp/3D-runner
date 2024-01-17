@@ -22,16 +22,17 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Start()
     {
-#if UNITY_EDITOR
-        _inputController = new KeyBoardInputManager();
-#elif UNITY_ANDROID
+        #if UNITY_EDITOR
+                _inputController = new KeyBoardInputManager();
+        #elif UNITY_ANDROID
         _inputController = new AndroidInputManager();
-#endif
+        #endif
     }
     private void Update()
     {
         _inputController.ManageInput();
-        StartGame();
+        if (!PlayMode && _inputController.WasTouched)
+            StartGame();
         if (PlayMode)
         {
             SwipeHorizontally();
@@ -40,12 +41,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void StartGame()
-    { 
-        if (PlayMode == false && _inputController.WasTouched && !_inputController.IsOverUI)
-        {
-            PlayMode = true;
-            PlayerAnimation.Instance.AnimateRun();
-        }
+    {
+        PlayMode = true;
+        PlayerAnimation.Instance.AnimateRun();
     }
 
     private void SwipeHorizontally()

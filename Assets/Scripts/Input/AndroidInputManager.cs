@@ -10,22 +10,23 @@ public class AndroidInputManager : IControlStrategy
     public bool Up { get; private set; } = false;
     public bool Down { get; private set; } = false;
     public bool WasTouched { get; private set; } = false;
-    public bool IsOverUI { get; private set; } = false;
 
     private bool _wasSwiped;
     private Vector2 _startPos;
 
     public void ManageInput()
     {
-        Left = Right = Up = Down = WasTouched = IsOverUI = false;
+        Left = Right = Up = Down = WasTouched = false;
         if (Input.touchCount > 0)
         {
-            WasTouched = true;
             Touch touch = Input.GetTouch(0);
             switch (touch.phase)
             {
                 case TouchPhase.Began:
-                    if (EventSystem.current.IsPointerOverGameObject(touch.fingerId)) IsOverUI = true;
+                    if (!EventSystem.current.IsPointerOverGameObject(touch.fingerId))
+                    {
+                        WasTouched = true;
+                    }
                     _startPos = touch.position;
                     _wasSwiped = false;
                     break;

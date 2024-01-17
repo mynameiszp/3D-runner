@@ -10,16 +10,14 @@ public class KeyBoardInputManager : IControlStrategy
     public bool Up { get; private set; } = false;
     public bool Down { get; private set; } = false;
     public bool WasTouched { get; private set; } = false;
-    public bool IsOverUI { get; private set; } = false;
 
     public void ManageInput()
     {
-        Left = Right = Up = Down = IsOverUI = WasTouched = false;
-        if (Input.GetMouseButtonDown(0)) WasTouched = true;
+        Left = Right = Up = Down = WasTouched = false;
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) WasTouched = true;
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) Left = true;
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) Right = true;
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) Up = true;
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) Down = true;
-        if (Input.GetMouseButtonDown(0) && EventSystem.current.IsPointerOverGameObject()) IsOverUI = true;
     }
 }
