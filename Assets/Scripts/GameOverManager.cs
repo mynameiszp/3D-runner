@@ -33,7 +33,6 @@ public class GameOverManager : MonoBehaviour
         restartButton.SetActive(false);
         watchAdButton.SetActive(false);
         yield return StartCoroutine(AnimateText(2, 1f));
-        Time.timeScale = 0; //
         restartButton.SetActive(true);
         if (hasWatchedAd == false) watchAdButton.SetActive(true);
     }

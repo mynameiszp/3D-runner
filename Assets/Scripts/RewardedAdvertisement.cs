@@ -28,12 +28,12 @@ public class RewardedAdvertisement : MonoBehaviour
         MobileAds.Initialize((InitializationStatus initStatus) => {
             // This callback is called once the MobileAds SDK is initialized.
         });
+        LoadAd();
     
     }
 
     public void OnRequestAd()
     {
-        LoadAd();
         ShowAd();
     }
     private void LoadAd()
@@ -48,6 +48,7 @@ public class RewardedAdvertisement : MonoBehaviour
 
         // Create our request used to load the ad.
         var adRequest = new AdRequest();
+
 
         // Send the request to load the ad.
         RewardedAd.Load(_adUnitId, adRequest, (RewardedAd ad, LoadAdError error) =>
