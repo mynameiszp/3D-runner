@@ -6,35 +6,28 @@ using TMPro;
 public class Score : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText;
-    private string _initialText = "Score: ";
+    private readonly string _initialText = "Score: ";
     private int _score;
-    public static Score Instance;
     private bool countStarted;
+    public static Score Instance;
     private void Awake()
     {
         if (Instance == null) Instance = this;
         scoreText.text = "";
     }
     private void Start()
-    {        
+    {
         _score = 0;
     }
     private void Update()
     {
-        if(!countStarted && ObstacleMove.GetMoveSpeed() == 1)
-        {
-            countStarted = true;
-        }
-        if (countStarted)
-        {
-            _score = (int)(ObstacleMove.GetMoveSpeed() * 100);
-            scoreText.text = _initialText + _score;
-        }
+        _score = (int)(ObstacleMovement.GetMoveSpeed() * 100);
+        scoreText.text = _initialText + _score;
     }
     public void ResetScore()
     {
         _score = 0;
-    }    
+    }
 
     public int GetScore()
     {

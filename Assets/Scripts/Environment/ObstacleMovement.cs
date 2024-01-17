@@ -7,9 +7,10 @@ public class ObstacleMovement : MonoBehaviour
     [SerializeField] private static float moveSpeed = 1f;
     [SerializeField] private float speedIncrease = 0.00001f;
     private ObjectsPool objectsPool;
+    private static float initialMoveSpeed;
     private void Start()
     {
-        moveSpeed = 1f;
+        initialMoveSpeed = moveSpeed;
         objectsPool = ObjectsPool.Instance;
     }
     private void FixedUpdate()
@@ -27,5 +28,9 @@ public class ObstacleMovement : MonoBehaviour
     public static float GetMoveSpeed()
     {
         return moveSpeed;
+    }    
+    public static void ResetMoveSpeed()
+    {
+        moveSpeed = initialMoveSpeed;
     }
 }

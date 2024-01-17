@@ -1161,7 +1161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4080047790122248297, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_text
-      value: Watch add to get +20 score
+      value: Watch add to revive
       objectReference: {fileID: 0}
     - target: {fileID: 4080047790122248297, guid: 14d7d5219074ce14fa2e1452cfb958a7, type: 3}
       propertyPath: m_fontSize

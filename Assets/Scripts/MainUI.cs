@@ -48,6 +48,7 @@ public class MainUI : MonoBehaviour
     {
         Time.timeScale = 1;
         Score.Instance.ResetScore();
+        ObstacleMovement.ResetMoveSpeed();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
