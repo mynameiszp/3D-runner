@@ -7,8 +7,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float laneDistance = 2;
-    [SerializeField] private float movementSmoothness = 300;
+    [SerializeField] private float lineWidth = 3;
+    [SerializeField] private float movementSmoothness = 20;
     private int desiredLine = 1;
     private bool isJumping;
     private bool isSliding;
@@ -68,11 +68,11 @@ public class PlayerController : MonoBehaviour
         Vector3 targetPosition = transform.position.z * transform.forward + transform.position.y * transform.up;
         if (desiredLine == 2)
         {
-            targetPosition += Vector3.right * laneDistance;
+            targetPosition += Vector3.right * lineWidth;
         }
         else if (desiredLine == 0)
         {
-            targetPosition += Vector3.left * laneDistance;
+            targetPosition += Vector3.left * lineWidth;
         }
         transform.position = Vector3.Lerp(transform.position, targetPosition, movementSmoothness * Time.deltaTime);
     }

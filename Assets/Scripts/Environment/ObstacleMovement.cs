@@ -29,7 +29,7 @@ public class ObstacleMovement : MonoBehaviour
     public static float GetMoveSpeed()
     {
         return moveSpeed;
-    }    
+    }         
     public static void ResetMoveSpeed()
     {
         moveSpeed = initialMoveSpeed;
