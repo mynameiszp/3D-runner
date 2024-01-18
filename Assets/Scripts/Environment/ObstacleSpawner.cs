@@ -5,7 +5,7 @@ public class ObstacleSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject positionsForSpawn;
     [SerializeField] private float spawnInitialPosition = 100f;
-    [SerializeField] private float spawnObjectDistance = 10f;
+    [SerializeField] private float spawnObjectDistance = 20f;
     private int _obstacleSpawnIndex;
     private bool _passedFirstObject;
     private ObjectsPool _objectsPool;

@@ -85,7 +85,6 @@ public class PlayerController : MonoBehaviour
                 PlayerAnimation.Instance.StopSliding();
                 StartCoroutine(PlayerAnimation.Instance.AnimateJump());
             }
-            //collider?
         }
         else if (_inputController.Down)
         {
@@ -94,7 +93,6 @@ public class PlayerController : MonoBehaviour
                 PlayerAnimation.Instance.StopJumping();
                 StartCoroutine(PlayerAnimation.Instance.AnimateSlide());
             }
-            //collider?
         }
     }
 }

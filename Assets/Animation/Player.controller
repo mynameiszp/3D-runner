@@ -8,7 +8,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Big Jump
-  m_Speed: 1
+  m_Speed: 1.05
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -6901667094795386026}
@@ -118,7 +118,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Running Slide
-  m_Speed: 1
+  m_Speed: 1.05
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 4639847707664103511}

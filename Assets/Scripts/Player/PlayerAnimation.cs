@@ -59,12 +59,10 @@ public class PlayerAnimation : MonoBehaviour
     }
     public void StopJumping()
     {
-        //StopCoroutine(AnimateJump());
         animator.SetBool("IsJumping", false);
     }   
     public void StopSliding()
     {
-        //StopCoroutine(AnimateSlide());
         animator.SetBool("IsSliding", false);
     }
     public bool IsJumping()
