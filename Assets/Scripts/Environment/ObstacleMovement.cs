@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObstacleMovement : MonoBehaviour
 {
-    [SerializeField] private static float moveSpeed = 1f;
+    [SerializeField] private static float moveSpeed = 0.5f;
     [SerializeField] private float speedIncrease = 0.00001f;
     private ObjectsPool objectsPool;
     private float speedLimit = 3f;

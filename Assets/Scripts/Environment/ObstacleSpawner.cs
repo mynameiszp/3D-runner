@@ -4,7 +4,7 @@ using UnityEngine;
 public class ObstacleSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject positionsForSpawn;
-    //[SerializeField] private float spawnInitialPosition = 50f;
+    [SerializeField] private float spawnInitialPosition = 100f;
     [SerializeField] private float spawnObjectDistance = 10f;
     private int obstacleSpawnIndex;
     private ObjectsPool objectsPool;
@@ -45,7 +45,13 @@ public class ObstacleSpawner : MonoBehaviour
             GameObject previousGameObject = objectsPool.GetPreviousObject(objectIndex);
             if (currentGameObject != null && previousGameObject != null)
             {
-                if (!currentGameObject.activeInHierarchy)
+                if (!currentGameObject.activeInHierarchy && !previousGameObject.activeInHierarchy)
+                {
+                    initialPosition = positionsForSpawn.transform.GetChild(obstacleSpawnIndex).position;
+                    currentGameObject.SetActive(true);
+                    currentGameObject.transform.position = new Vector3(initialPosition.x, initialPosition.y, spawnInitialPosition + spawnObjectDistance);
+                }
+                else if (!currentGameObject.activeInHierarchy)
                 {
                     initialPosition = positionsForSpawn.transform.GetChild(obstacleSpawnIndex).position;
                     currentGameObject.SetActive(true);
