@@ -44,30 +44,48 @@ public class FirebaseManager : MonoBehaviour
     void Awake()
     {
         if (Instance == null) Instance = this;
-        //Check that all of the necessary dependencies for Firebase are present on the system
-            FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
+        // Check that all of the necessary dependencies for Firebase are present on the system
+        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
+        {
+            dependencyStatus = task.Result;
+            if (dependencyStatus == DependencyStatus.Available)
             {
-                dependencyStatus = task.Result;
-                if (dependencyStatus == DependencyStatus.Available)
-                {
-                    //If they are avalible Initialize Firebase
-                    InitializeFirebase();
-                }
-                else
-                {
-                    Debug.LogError("Could not resolve all Firebase dependencies: " + dependencyStatus);
-                }
-            });
-        
+                // If they are available, initialize Firebase
+                InitializeFirebase();
+            }
+            else
+            {
+                Debug.LogError("Could not resolve all Firebase dependencies: " + dependencyStatus);
+            }
+        });
 
+        // Wait for Firebase initialization to complete
+        StartCoroutine(CheckFirebaseInit());
         warningLoginText.text = "";
         warningRegisterText.text = "";
+    }
+
+    private IEnumerator CheckFirebaseInit()
+    {
+        while (auth == null)
+        {
+            yield return null;
+        }
+        // Now that Firebase is initialized, check for the current user
+        if (auth.CurrentUser != null)
+        {
+            User = auth.CurrentUser;
+            yield return StartCoroutine(LoadUserData()); //no yield return
+            _username = auth.CurrentUser.DisplayName;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
         DontDestroyOnLoad(this.gameObject);
     }
+
     private void InitializeFirebase()
     {
         Debug.Log("Setting up Firebase Auth");
-        //Set the authentication instance object
+        // Set the authentication instance object
         auth = FirebaseAuth.DefaultInstance;
         DBReference = FirebaseDatabase.DefaultInstance.RootReference;
     }
@@ -237,7 +255,7 @@ public class FirebaseManager : MonoBehaviour
             _username = username;
         }
     }
-    public IEnumerator UpdateScore(int score) //додати перевірку на макс результат
+    public IEnumerator UpdateScore(int score) //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     {
         if (score >= _score)
         {

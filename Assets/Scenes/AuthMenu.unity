@@ -2370,12 +2370,14 @@ MonoBehaviour:
   dependencyStatus: 0
   emailLoginField: {fileID: 895827705}
   passwordLoginField: {fileID: 2088482338}
-  warningLoginText: {fileID: 370790289}
+  warningLoginText: {fileID: 0}
   usernameRegisterField: {fileID: 970001821}
   emailRegisterField: {fileID: 1810016002}
   passwordRegisterField: {fileID: 1551689442}
   passwordRegisterVerifyField: {fileID: 1308054281}
-  warningRegisterText: {fileID: 1393428119}
+  warningRegisterText: {fileID: 0}
+  _username: 
+  _score: 0
 --- !u!1 &1747063633
 GameObject:
   m_ObjectHideFlags: 0
@@ -2632,7 +2634,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1982488792
 MonoBehaviour:
   m_ObjectHideFlags: 0

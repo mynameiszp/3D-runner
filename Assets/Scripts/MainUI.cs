@@ -61,12 +61,15 @@ public class MainUI : MonoBehaviour
         if (isPaused)
         {
             Time.timeScale = 1;
+            PlayerController.Instance.PlayMode = true;
             isPaused = false;
         }
         else
         {
             Time.timeScale = 0;
             isPaused = true;
+            PlayerController.Instance.PlayMode = false;
         }
+
     }
 }

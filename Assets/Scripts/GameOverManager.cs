@@ -11,6 +11,7 @@ public class GameOverManager : MonoBehaviour
     [SerializeField] private Canvas deathCanvas;
     [SerializeField] private GameObject gameCanvas;
     [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private Image image;
     [SerializeField] private GameObject restartButton;
     [SerializeField] private GameObject watchAdButton;
     private Tween fadeTween;
@@ -28,36 +29,50 @@ public class GameOverManager : MonoBehaviour
     {
         PlayerController.Instance.PlayMode = false;
         gameCanvas.SetActive(false);
+        PlayerAnimation.Instance.Die();
         StartCoroutine(FirebaseManager.Instance.UpdateScore(scoreManager.GetScore()));
         deathCanvas.enabled = true;
         restartButton.SetActive(false);
         watchAdButton.SetActive(false);
+        BlinkOut(0f, text);
+        yield return StartCoroutine(AnimateImage(2f));
         yield return StartCoroutine(AnimateText(2, 1f));
+        PlayerAnimation.Instance.Revive();
         restartButton.SetActive(true);
         if (hasWatchedAd == false) watchAdButton.SetActive(true);
     }
 
-    private void BlinkIn(float duration)
+    private void BlinkIn(float duration, Graphic graphics)
     {
-        fadeTween = text.DOFade(1f, duration);
+        fadeTween = graphics.DOFade(1f, duration);
     }
-    private void BlinkOut(float duration)
+    private void BlinkOut(float duration, Graphic graphics)
     {
-        fadeTween = text.DOFade(0f, duration);
+        fadeTween = graphics.DOFade(0f, duration);
     }
 
     private IEnumerator AnimateText(int repeat, float duration)
-    {
+    { 
         for (int i = 0; i < repeat; i++)
-        {
-            BlinkOut(duration);
+        {            
+            BlinkIn(duration, text);
             yield return new WaitForSecondsRealtime(duration);
-            BlinkIn(duration);
+            BlinkOut(duration, text);
             yield return new WaitForSecondsRealtime(duration);
         }
+        BlinkIn(duration, text);
+        yield return new WaitForSecondsRealtime(duration);
+    }
+    private IEnumerator AnimateImage(float duration)
+    {
+        BlinkOut(0f, image);
+        BlinkIn(duration, image);
+        yield return new WaitForSecondsRealtime(duration);
     }
 
-    public void Revive() {
+    public void Revive()
+    {
+        //PlayerAnimation.Instance.Revive();
         hasWatchedAd = true;
         deathCanvas.enabled = false;
         gameCanvas.SetActive(true);

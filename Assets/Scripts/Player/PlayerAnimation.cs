@@ -37,7 +37,7 @@ public class PlayerAnimation : MonoBehaviour
         animator.SetBool("IsJumping", true);
         defaultCollider.enabled = false;
         jumpCollider.enabled = true;
-        yield return new WaitForSecondsRealtime(jumpTime);
+        yield return new WaitForSeconds(jumpTime - 0.2f);
         animator.SetBool("IsJumping", false);
         defaultCollider.enabled = true;
         jumpCollider.enabled = false;
@@ -48,13 +48,14 @@ public class PlayerAnimation : MonoBehaviour
         animator.SetBool("IsSliding", true);
         defaultCollider.enabled = false;
         slideCollider.enabled = true;
-        yield return new WaitForSecondsRealtime(slideTime);
+        yield return new WaitForSeconds(slideTime);
         animator.SetBool("IsSliding", false);
         defaultCollider.enabled = true;
         slideCollider.enabled = false;
     }
     public void AnimateRun()
     {
+        jumpCollider.enabled = false;
         animator.SetBool("IsRunning", true);
     }
     public void StopJumping()
@@ -63,7 +64,16 @@ public class PlayerAnimation : MonoBehaviour
     }   
     public void StopSliding()
     {
+        slideCollider.enabled = false;
         animator.SetBool("IsSliding", false);
+    }
+    public void Die()
+    {
+        animator.SetBool("IsDead", true);
+    }    
+    public void Revive()
+    {
+        animator.SetBool("IsDead", false);
     }
     public bool IsJumping()
     {
