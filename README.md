@@ -8,3 +8,5 @@ The game is built using the Unity Engine and C#. I adhere to SOLID principles an
 - Object pooling for efficient obstacle generation. 
 
 Branch main contains final version of the game.
+More screenshots of the game can be found [here](/Screenshots).
+![](/Screenshots/Menu.jpg)
